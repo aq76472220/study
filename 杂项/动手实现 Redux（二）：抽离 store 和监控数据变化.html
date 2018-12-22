@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>抽离store和监控数据变化</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+</head>
+ 
+
+<body> 
+    <div id='title'></div>
+    <div id='content'></div>
+</body>
+
+</html>
+
+ 
+<script type="text/javascript">
+
+    
+
+    let appState = {
+      title: {
+        text: 'React.js 小书',
+        color: 'red',
+      },
+      content: {
+        text: 'React.js 小书内容',
+        color: 'blue'
+      }
+    }
+
+    function stateChanger (state, action) {
+      switch (action.type) {
+        case 'UPDATE_TITLE_TEXT':
+          state.title.text = action.text
+          break
+        case 'UPDATE_TITLE_COLOR':
+          state.title.color = action.color
+          break
+        default:
+          break
+      }
+    }
+
+    function renderApp (appState) {
+      console.log('render app...')
+      renderTitle(appState.title)
+      renderContent(appState.content)
+    }
+
+    function renderTitle (title) {
+      console.log('render title...')
+      const titleDOM = document.getElementById('title')
+      titleDOM.innerHTML = title.text
+      titleDOM.style.color = title.color
+    }
+
+    function renderContent (content) {
+      console.log('render content...')
+      const contentDOM = document.getElementById('content')
+      contentDOM.innerHTML = content.text
+      contentDOM.style.color = content.color
+    }
+
+
+    function createStore (state, stateChanger) {
+      const listeners = []
+      //const subscribe = (listener) => listeners.push(listener)
+
+      const subscribe = function(listener){
+         listeners.push(listener)
+          console.log(listeners)
+      }
+
+
+
+      const getState = () => state
+      const dispatch = (action) => {
+        stateChanger(state, action)
+        listeners.forEach((listener) => listener())
+      }
+      return { getState, dispatch, subscribe }
+    }
+
+
+    const store = createStore(appState, stateChanger)
+    //store.subscribe(() => )
+
+    store.subscribe(function(){
+      renderApp(store.getState())
+    })
+
+    renderApp(store.getState()) // 首次渲染页面 
+    store.dispatch({ type: 'UPDATE_TITLE_TEXT', text: '《React.js 小书》' })// 修改标题文本) 
+    store.dispatch({ type: 'UPDATE_TITLE_COLOR', color: 'blue' }) // 修改标题颜色 
+    store.dispatch({ type: 'UPDATE_TITLE_COLOR', color: 'pink' }) // 修改标题颜色
+  
+
+</script>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>javascript的浅拷贝和深拷贝</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+</head>
+ 
+
+<body>
+
+</body>
+
+</html>
+
+ 
+<script type="text/javascript">
+
+    
+  // var a = [1,2,3,4,5];
+  // var b = a;
+  // var c = a[0];
+  // console.log(b);
+  // console.log(c);
+
+  // //改变数值
+  // b[4]=8;
+  // c=7;
+  // console.log(a);
+  // console.log(b);
+  // console.log(c); 
+
+  // var a ={key1:"111111"};
+  // function Copy(p){
+  //     var c = {};
+  //     for(var i in p){
+  //         c[i]=p[i];
+  //     }
+  //     console.log(c);//object{key1: "111111", key2: Array(2)}
+  //     return c;
+  // }
+  // a.key2=["喵喵","喵"];
+  // var b = Copy(a);
+  // b.key3="333333";
+  // console.log(b);//object{key1: "111111", key2: Array(2), key3: "333333"}
+  // console.log(a);//object{key1: "111111", key2: Array(2)}
+  // b.key2.push("喵喵喵");
+  // console.log(b);//object{key1: "111111", key2: Array(3), key3: "333333"}
+  // console.log(a);//object{key1: "111111", key2: Array(3)}
+
+  function deepCopy(initalobj,finalobj){
+      var obj = finalobj||{};
+      for(var i in initalobj){
+          if(typeof initalobj[i] ==="object"){
+              obj[i]=(initalobj[i].constructor===Array)?[]:{};
+              deepCopy(initalobj[i],obj[i]);
+          }
+          else{
+              obj[i]=initalobj[i];
+          }
+      }
+      return obj;
+  }
+  
+  var obj ={a:{a:"hello",b:10}};
+  var str =deepCopy(obj);
+  console.log(str);//{a:{a: "changed", b: 10}}
+  str.a.a="changed";
+  console.log(str);//{a:{a: "changed", b: 10}}
+  console.log(obj);//{a:{a:"hello",b:10}}
+
+ 
+
+</script>
