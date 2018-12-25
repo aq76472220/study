@@ -67,10 +67,9 @@
     }
 
 
-    function createStore (state, stateChanger) {
+    function createStore (stateChanger,state) {
       const listeners = []
       //const subscribe = (listener) => listeners.push(listener)
-
       const subscribe = function(listener){
          listeners.push(listener)
           console.log(listeners)
@@ -87,7 +86,10 @@
     }
 
 
-    const store = createStore(appState, stateChanger)
+    const store = createStore(stateChanger ,appState)
+
+    console.log(store.getState())
+
     //store.subscribe(() => )
 
     store.subscribe(function(){
