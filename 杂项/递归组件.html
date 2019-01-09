@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>递归组件</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+</head>
+ 
+<body>
+
+    <div id="app"> 
+      <my-component :count='count'>{{count}}</my-component>
+    </div>
+    
+
+
+    <script>
+        Vue.component('my-component',{
+          name: 'my-component',
+          template: ' <my-component :count="count + 1" v-if="count <= 5">   </my-component>',
+          props:['count']
+        })
+
+        var vm = new Vue({
+          el:'#app',
+          data:{
+            count: 1
+          },
+          methods:{
+            
+          },
+          
+        })
+
+
+    </script>
+
+</body>
+</html> 
