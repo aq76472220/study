@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>class 类</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+</head>
+ 
+
+<body> 
+    <div id='app'>
+         
+    </div>
+</body>
+
+</html>
+
+ 
+<script type="text/javascript">
+    
+    // function Person(name) {
+    //   console.log(new.target)
+    //   if (new.target !== undefined) {
+    //     this.name = name;
+    //   } else {
+    //     throw new Error('必须使用 new 命令生成实例');
+    //   }
+    // }
+
+    // var person = new Person() 
+    // console.log()
+
+    // class Shape {
+    //   constructor() {
+    //     console.log('我执行了吗？')
+    //     if (new.target === Shape) {
+    //       throw new Error('本类不能实例化');
+    //     }
+    //   }
+    // }
+
+    // class Rectangle extends Shape {
+    //   constructor(length, width) {
+    //     super();
+    //     // ...
+    //   }
+    // }
+
+    //var x = new Shape();  // 报错
+    //var y = new Rectangle(3, 4);  // 正确
+
+    class A {
+      p() {
+        console.log('我是父类我执行了吗...')
+        return 2;
+      }
+    }
+
+    class B extends A {
+      constructor() {
+        super();
+        console.log(super.p()); // 2
+      }
+    }
+
+    let b = new B();
+
+</script>
