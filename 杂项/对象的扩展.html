@@ -20,11 +20,15 @@
  
 <script type="text/javascript">
     
-const foo = 'bar';
-const baz = {foo};
-console.log( baz )
-
+// const foo = 'bar';
+// const baz = {foo};
+// console.log( baz )
+// let obj = { foo: 123 };
+// console.log(Object.getOwnPropertyDescriptor(obj, 'foo'))
 // 等同于
  
+ let { x, y, ...z } = { x: 1, y: 2, a: 3, b: 4 };
+
+ console.log(x,y,z)
 
 </script>
