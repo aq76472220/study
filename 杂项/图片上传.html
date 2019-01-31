@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>class 类</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <script src="https://code.jquery.com/jquery-3.3.1.js""></script>
+</head>
+ 
+
+<body> 
+    <div id='app'>
+        <label for='uploadImg' class="ss-lable"></label>
+        <input  type="file" id="uploadImg" />
+        <img src="">
+    </div>
+</body>
+
+</html>
+
+ 
+<script type="text/javascript">
+     
+
+    // $('#uploadImg').on('click',function(e){
+    //     console.log(e)
+    // })
+
+    $('#uploadImg').on('change',function(e){
+        
+        var file = e.target.files[0] 
+   
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = e => {
+            console.log(e.target.result)
+
+             const image = new Image();
+            image.src = e.target.result;
+            image.onload = () => {
+                console.log(image);
+                $('body').append(image)
+            } 
+        }
+ 
+    })
+
+</script>
+
+<style type="text/css">
+    .ss-lable{display: block; width: 100px; height: 100px; background: blue}
+    input{display: none}
+</style>
