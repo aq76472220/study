@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>生成器</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"> 
+</head>
+ 
+<body>
+
+    <div id="app">  
+    </div>
+    
+
+
+    <script>
+      // function* helloWorldGenerator() {
+      //   console.log('开始执行hello了')
+      //   yield 'hello';
+      //   yield 'world';
+      //   console.log('world 结束了')
+      //   return 'ending';
+      // }
+
+      // var hw = helloWorldGenerator();
+      // console.log(hw.next());
+      // console.log(hw.next());
+      // console.log(hw.next());
+      // console.log(hw.next());
+
+      // function* gen(){
+      //   yield 123+456
+      // }
+
+      // var gen = gen()
+      // console.log (gen.next())
+
+      // function* a() {
+      //   yield 
+      // } 
+      // a()
+
+      // function* foo(x) {
+      //   var y = 2 * (yield (x + 1));
+      //   console.log(y)
+      //   var z = yield (y / 3);
+      //   return (x + y + z); // x :5 y: 24 z:13
+      // }
+
+      // var a = foo(5);
+      // // a.next() // Object{value:6, done:false}
+      // // a.next() // Object{value:NaN, done:false}
+      // // a.next() // Object{value:NaN, done:true}
+
+      // var b = foo(5);
+      // console.log(b.next()) // { value:6, done:false }
+      // console.log(b.next(12)) // { value:8, done:false }
+      // console.log(b.next(13)) // { value:42, done:true }
+
+
+      // function* foo(){
+      //   console.log('要执行1了')
+      //   yield 1;
+      //   console.log('要执行2了')
+      //   yield 2;
+      //   console.log('要执行3了')
+      //   yield 3;
+      //   console.log('要执行4了')
+      //   yield 4;
+      //   console.log('要执行5了')
+      //   yield 5;
+      //   console.log('要执行6了')
+      //   yield 6; 
+      //   return 7
+      // }
+
+      // for (let v of foo()){
+      //   console.log(v)
+      // }
+
+      // function* fibonacci() {
+      //   let [prev, curr] = [0, 1];
+      //   for (;;) {
+      //     yield curr;
+      //     [prev, curr] = [curr, prev + curr];
+      //   }
+      // }
+
+      // for (let n of fibonacci()) {
+      //   if (n > 100000) break;
+      //   console.log(n);
+      // }
+
+
+    </script>
+
+</body>
+</html> 

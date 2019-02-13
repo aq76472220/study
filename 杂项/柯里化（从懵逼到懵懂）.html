@@ -12,11 +12,7 @@
 
 <body> 
     <div id='app'>
-        <base-input
-          v-model="username"
-          id="username-input"
-          placeholder="Enter your username"
-        ></base-input>
+        
     </div>
 </body>
 
@@ -24,7 +20,15 @@
 
  
 <script type="text/javascript">
-    
-  
-     
+    function Person (name) {
+      this.name = name;
+    }
+
+    Person.prototype.sayName = function (){
+      console.log(this.name)
+    }
+
+    var p = new Person('小明');
+    console.log(p)
+
 </script>

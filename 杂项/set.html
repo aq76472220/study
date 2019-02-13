@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>set map</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"> 
+</head>
+ 
+
+<body> 
+    <div id='myDiv'>
+        
+    </div>
+</body>
+
+</html>
+
+ 
+<script type="text/javascript">
+    
+    // let set = Object.create(null);
+
+    // set.foo = true;
+
+    // console.log(set)
+
+    // // 检查属性的存在性
+    // if (set.foo) {
+
+    //     // 一些操作
+    // }
+
+    // let set= new Set(); 
+    // set.add(1);
+    // set.add('1'); 
+    // console.log(set)
+
+    // let set = new Set([1,2,3,3,3,3]);
+    // console.log(set.has(5)); //false
+    // console.log([...set]); 
+
+    // let set = new Set([2,2,3,3,3,3]);
+    //  set.forEach(function (value,key,ownerSet) {
+    //      console.log(value);
+    //      console.log(key); 
+    //      console.log(ownerSet);           
+    //  })
+
+     // let map = new Map();
+     // map.set('title','hello world');
+     // map.set('year','2018');
+     // console.log(map);
+     // console.log(map.get('title')); // hello world
+    //var arr = [...new Set([12,'sa','sa','数组可以去重','数组可以去重'])]
+    //console.log([...new Set('ababbc')])
+    // function dedupe(array) {
+    //   return Array.from(new Set(array));
+    // }
+    // console.log(dedupe([1, 1, 2, 3])) // [1, 2, 3]
+    // console.log(new Set([10,2,1,2,1,11,112]).entries())
+
+    // let set = new Set(['red', 'green', 'blue']);
+    // console.log(set.entries())
+
+    // for (let item of set.keys()) {
+    //   console.log(item);
+    // }
+    // // red
+    // // green
+    // // blue
+
+    // for (let item of set.values()) {
+    //   console.log(item);
+    // }
+    // // red
+    // // green
+    // // blue
+
+    // for (let item of set.entries()) {
+    //   console.log(item);
+    // }
+    // ["red", "red"]
+    // ["green", "green"]
+    // ["blue", "blue"]
+
+    // const ws = new WeakSet();
+    // ws.add(1)
+    // // TypeError: Invalid value used in weak set
+    // ws.add(Symbol())
+    // // TypeError: invalid value used in weak set
+
+    // const data = {};
+    // const element = document.getElementById('myDiv');
+
+    // // data[element] = 'metadata';
+    // // // data['[object HTMLDivElement]'] // "metadata"
+
+    // // // console.log(data)
+
+    // let map = new Map([[element,{a:10}]])
+    // console.log(map)
+
+    // // var  map = new Map([
+    // //   [element, '张三'],
+    // //   ['title', 'Author']
+    // // ]);
+
+    // console.log(map)
+
+    // function Set(arr = []) {    // 可以传入数组
+    //     let items = {};
+    //     this.size = 0;  // 记录集合中成员的数量
+    //     this.has = function(val) {
+    //         // 对象都有hasOwnProperty方法，判断是否拥有特定属性
+    //         return items.hasOwnProperty(val);  
+    //     };
+    // }
+
+    // has(val)方法  
+    // var set = new Set()
+    // console.log(set)
+
+
+    // var arr = ['一是大汉','二操','三丕']
+
+    // for (var  value of arr){
+    //     console.log(value)
+    // }
+
+    // let map = new Map()
+    // // const key = {};
+
+    // let map = new Map();
+    // const key = {};
+    // map.set(key, '谁知道这是个什么玩意1');
+    // map.set(key, '谁知道这是个什么玩意2');
+    // console.log(map.get(key)) // 谁知道这是个什么玩意
+
+
+    let map = new Map();
+    const key = {};
+    map.set(key, '这是个什么玩意');
+    map.set('name', 'haha');
+    map.set('id', 1);
+    map.forEach((value, key) => {
+      console.log(key, value)
+    })
+
+    //Object {} "这是个什么玩意"
+    //"name" "haha"
+    //"id" 1
+
+
+
+
+
+</script>
