@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>柯里化(部分求值--为了解决性能问题--钱一直赞着等钱够了再买房)</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+</head>
+ 
+
+<body> 
+    <div id='app'>
+    </div>
+</body>
+
+</html>
+
+ 
+<script type="text/javascript">
+   
+    // let arr1 = [1, 2, 3, 4, 5];
+    // let arr2 = [6, 7, 8, 9, 10];
+
+    // [].push.apply(arr1, arr2)
+
+    // console.log(arr1,arr2)
+
+    // 简单实现，参数只能从右到左传递
+    function createCurry(func, args) { 
+        var arity = func.length;
+        var args = args || [];
+
+        return function() {  
+            var _args = [].slice.call(arguments);
+
+            [].push.apply(_args, args); // 2 个数组合并的方法... 
+
+            console.log(_args,args,'..........')
+
+            // 如果参数个数小于最初的func.length，则递归调用，继续收集参数
+            if (_args.length < arity) {
+                return createCurry.call(this, func, _args); // 用call 的目的为了改变this指向
+            }
+
+            
+            // 参数收集完毕，则执行func
+            //console.log(_args,'我是执行的参数奇怪怎么反了!!!!!')
+            return func.apply(this, _args); // 用apply的目的是为了方便传参 
+        } 
+    }
+
+    function check(targetString,reg) {
+        //console.log(aa,targetString,reg,'我是最终要执行的..................')
+        return reg.test(targetString);
+    }
+
+    var _check = createCurry(check);
+    var checkPhone = _check(/^1[34578]\d{9}$/);
+   //var checkEmail = _check(/^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$/);
+
+   checkPhone(13699889969)
+</script>

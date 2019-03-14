@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>class 类</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"> 
+</head>
+ 
+
+<body> 
+    <div id='app'>
+    </div>
+</body>
+
+</html>
+
+ 
+<script type="text/javascript">
+
+    // demo2
+    function test() {
+        console.log(foo); // fo 函数
+        console.log(bar); // undefind
+
+        var foo = 'Hello';
+        console.log(foo); // Hello
+        var bar = function () {
+            return 'world';
+        }
+
+        function foo() {
+            return 'hello';
+        }
+
+        function foo() {
+            return '函数是会覆盖的，但是声明变量是不会覆盖的';
+        }
+    }
+
+    test();
+
+</script>
