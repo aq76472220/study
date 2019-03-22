@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>call,apply,bind区别</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"> 
+</head>
+ 
+
+<body> 
+    <div>
+        
+    </div>
+</body>
+
+</html>
+
+ 
+<script type="text/javascript">
+    
+   // var getSingle = function (fn) { // 创建单例方法
+   //      var result // 通过闭包保存创建过的对象
+   //      return function () {
+   //          return result || (result = fn.apply(this, arguments))
+   //      }
+   //  }
+
+   //  var createPerson = getSingle(function (name) {
+   //      return {name: name}
+   //  })
+
+   //  var person1 = createPerson('张三')
+   //  //var person2 = createPerson('李四')
+
+   //  console.log(person1);  // {name: '张三'} {name: '张三'}
+
+   var arr = []
+   arr.push(()=>{
+    return 1
+   })
+
+   console.dir(arr[0]())
+</script>

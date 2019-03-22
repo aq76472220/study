@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>作用域插槽</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+</head>
+ 
+
+<body> 
+    <div id='app'>
+        <todo-list :todos="todos">
+          <!-- 将 `slotProps` 定义为插槽作用域的名字 -->
+          <template slot-scope="{todo}">
+            <!-- 为待办项自定义一个模板，-->
+            <!-- 通过 `slotProps` 定制每个待办项。-->
+            <span>真的拿不到吗？{{id}}</span>
+            <my-componet :id='id'></my-componet>
+            <span v-if="todo.isComplete">✓</span>
+            {{ todo.text }}
+          </template>
+        </todo-list>
+    </div>
+</body>
+
+</html>
+
+ 
+<script type="text/javascript">
+    Vue.component('todo-list', {
+      props: ['todos'],
+      template: `
+        <ul>
+          <li
+            v-for="todo in todos"
+            v-bind:key="todo.id"
+          >
+             <slot :todo="todo">
+                <!-- 回退的内容 -->
+                {{ todo.text }}
+             </slot>
+          </li>
+        </ul>
+      `
+    })
+
+    Vue.component('my-componet', {
+      props: ['id'],
+      template: `
+       <div>
+        我是插槽里面的组件我要拿id了.......
+        {{id}}
+       </div>
+      `
+    })
+
+    new Vue({
+        el:'#app',
+        data:{
+          id:'7696996023323',
+          todos: [{text: '我是第一项', isComplete: true}, {text: '我是第二项', isComplete:false}]
+        }
+    })
+     
+</script>

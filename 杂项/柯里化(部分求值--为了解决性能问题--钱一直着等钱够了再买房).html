@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>柯里化(部分求值--为了解决性能问题--钱一直赞着等钱够了再买房)</title>
+    <title>柯里化(部分求值-钱一直赞着等钱够了再买房)</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -35,9 +35,7 @@
             var _args = [].slice.call(arguments);
 
             [].push.apply(_args, args); // 2 个数组合并的方法... 
-
-            console.log(_args,args,'..........')
-
+ 
             // 如果参数个数小于最初的func.length，则递归调用，继续收集参数
             if (_args.length < arity) {
                 return createCurry.call(this, func, _args); // 用call 的目的为了改变this指向
@@ -50,14 +48,36 @@
         } 
     }
 
-    function check(targetString,reg) {
-        //console.log(aa,targetString,reg,'我是最终要执行的..................')
-        return reg.test(targetString);
+   //  function check(targetString,reg) {
+   //      //console.log(aa,targetString,reg,'我是最终要执行的..................')
+   //      return reg.test(targetString);
+   //  }
+   //  var _check = createCurry(check);
+   //  var checkPhone = _check(/^1[34578]\d{9}$/);
+   // //var checkEmail = _check(/^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$/);
+   // checkPhone(13699889969)
+
+    function _filter(array,func) {
+        return array.filter(func);
     }
 
-    var _check = createCurry(check);
-    var checkPhone = _check(/^1[34578]\d{9}$/);
-   //var checkEmail = _check(/^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$/);
+    var _find = createCurry(_filter);
 
-   checkPhone(13699889969)
+    var findNumber = _find(function(item) {
+        if (typeof item == 'number') {
+            return item;
+        }
+    })
+
+    var findString = _find(function(item) {
+        if (typeof item == 'string') {
+            return item;
+        }
+    })
+
+    console.log( findNumber([1, 2, 3, '2', '3', 4]) ); 
+    console.log( findString([1, 2, 3, '2', '3', 4]) ); 
+
+
+
 </script>
