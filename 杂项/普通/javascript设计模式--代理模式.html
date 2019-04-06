@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>javascript设计模式--代理模式</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"> 
+</head>
+ 
+
+<body> 
+    <div>
+        
+    </div>
+</body>
+
+</html>
+
+ 
+<script type="text/javascript">
+    
+  var throttle = function (fn, interval) {
+      var firstTime, timer
+      return function () {
+          var _this = this
+          // if(!firstTime) {
+          //     fn.apply(this, arguments)
+          //     firstTime = true
+          // }
+          console.log(timer)
+          if (!timer) {
+              timer = setTimeout(function() {
+                  fn.apply(_this, arguments)
+                  timer = null
+              }, interval);
+          }
+      }
+  }
+
+  var onScroll = function () {
+      console.log('onScroll', Date.now())
+  }
+
+  var throttleOnScroll = throttle(onScroll, 2000)
+  // throttleOnScroll()
+  setInterval(throttleOnScroll, 300) // 每2秒执行一次onScroll函数
+
+</script>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>sync修饰符</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+</head>
+ 
+
+<body> 
+    <div id='app'>
+        <div>sync修饰符</div>
+
+        <!-- <text-document
+          v-bind:title="doc.title"
+          v-on:update:title="doc.title = $event"
+        ></text-document>
+ -->
+        <text-document
+         v-bind:title.sync="doc.title"
+        ></text-document>
+
+        {{doc.title}}
+    </div>
+</body>
+
+</html>
+
+ 
+<script type="text/javascript"> 
+Vue.component('text-document', { 
+  props: ['title'], 
+  template: `
+    <div> 
+      <button @click='setNewTitle'>更新标题</button>
+    </div>
+  `,
+  methods:{
+   setNewTitle:function(){
+       this.$emit('update:title', '这不操作修改标题实现prop双向绑定')
+    } 
+  }
+ 
+})
+
+ 
+var vm = new Vue({
+  el:'#app',
+  data:{
+     doc:{
+      title:'对prop进行“双向绑定”'
+     }
+  },
+  methods:{
+    onFocus:function(){
+      console.log(1111)
+    }, 
+    handleClick () {
+      alert('hello,world!')
+    }
+  }
+})
+
+ 
+
+</script>

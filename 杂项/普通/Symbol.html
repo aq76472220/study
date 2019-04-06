@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Symbol</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"> 
+</head>
+ 
+<body>
+
+    <div id="app">  
+    </div>
+    
+
+
+    <script>
+       
+        // let s = Symbol('我只是一个参数而已......');  
+        // var obj = {
+        //   [s]:'你是猴子请来的逗比吗？', 
+        // 's':'错我不是猴子请来的！'
+        // } 
+        // console.log(obj)
+
+
+        // let mySymbol = Symbol('我是甩头功!!')
+        // let a = {}
+
+
+        // Object.defineProperty(a,mySymbol,{value:'Hello!'})
+        
+        // console.log(a)
+
+
+        const COLOR_RED    = Symbol();
+        const COLOR_GREEN  = Symbol();
+
+        function getComplement(color) {
+          switch (color) {
+            case COLOR_RED:
+              return COLOR_GREEN;
+            case COLOR_GREEN:
+              return COLOR_RED;
+            default:
+              throw new Error('Undefined color');
+            }
+        }
+
+        console.log(getComplement(COLOR_RED))
+
+    </script>
+
+</body>
+</html> 

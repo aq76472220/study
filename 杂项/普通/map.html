@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>map</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+</head>
+ 
+
+<body> 
+    <div id='app'>
+
+    </div>
+</body>
+
+</html>
+
+ 
+<script type="text/javascript">
+    
+    // var arr = [{n:1,type:'第一个'},{n:3,type:'第二个'}];
+    // var narr = arr.map((item, index) => {
+    //     return  item.n = false
+    // })
+
+    // console.log(arr, narr)
+
+    var newArr = [1, 2, 3, 4].map(function(item, i, arr) {
+        console.log(item, i, arr, this);  // 可运行试试看
+        return item + 1;  // 每一项加1
+    }, { a: 1 })
+
+    console.log(newArr)
+</script>

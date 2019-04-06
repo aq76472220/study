@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>作用域插槽</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+</head>
+ 
+
+<body> 
+    <div id='app'>
+      <my-component></my-component>  
+    </div>
+</body>
+
+</html>
+
+ 
+<script type="text/javascript">
+    Vue.component('my-component', {
+      template: `
+        <div>
+          <button @click='toFatherHandle'>点击访问父级的方法</button>
+        </div>
+      `,
+      inject: ['fatherHandle'],
+      methods: {
+        toFatherHandle () { // 调用父级的方法
+          this.fatherHandle('##我是传过来的参数##')
+        }
+      }
+    })
+
+    new Vue({
+        el:'#app',
+        data:{
+          
+        },
+        provide: function () {
+          return {
+            fatherHandle: this.fatherHandle
+          }
+        },
+        methods: {
+          fatherHandle (e) { // 调用父级的方法
+            console.log(e,'我是父级的方法....')
+          }
+        }
+    })
+     
+</script>

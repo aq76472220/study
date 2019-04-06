@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>函数的隐式转换...</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+</head>
+ 
+
+<body> 
+    <div id='app'>
+
+    </div>
+</body>
+
+</html>
+
+ 
+<script type="text/javascript">
+    // function fn() { return 20; }
+    // fn.valueOf = function() { return 30 }
+    // console.log(fn + 10);     // 输出结果 function fn() { return 20 }10
+
+    function fn() {
+        return 20;
+    }
+    console.log(fn + 10); // 输出结果是多少？
+
+</script>

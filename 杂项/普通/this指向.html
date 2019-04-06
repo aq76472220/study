@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>this指向</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+</head>
+ 
+
+<body> 
+    <div id='app'>
+        <button @clcik='fdHandle'></button>
+    </div>
+</body>
+
+</html>
+
+ 
+<script type="text/javascript">
+
+    // demo01
+    // var a = 20;
+    // function fn() {
+    //   console.log(this.a);
+    // }
+    // fn();
+
+
+    // demo02
+    // var a = 20;
+    // function fn() {
+    //     function foo() {
+    //         console.log(this.a);
+    //     }
+    //     foo();
+    // }
+    // fn();
+
+
+    // demo03
+    // var a = 20;
+    // var obj = {
+    //     a: 10,
+    //     c: this.a + 20, // this没有作用域的限制 this就是全局作用域
+    //     fn: function () {
+    //         return this.a;
+    //     }
+    // }
+
+    // console.log(obj.c); // 30  ..... 40
+    // console.log(obj.fn()); //10 
+
+    // 为了能够准确判断，我们在函数内部使用严格模式，因为非严格模式会自动指向全局
+    // function fn() {
+    //     'use strict';
+    //     console.log(this);
+    // }
+
+    // fn();  // fn是调用者，独立调用
+    // window.fn();  // fn是调用者，被window所拥有
+
+
+    //'use strict';
+    // var a = 20;
+    // function foo () {
+    //     var a = 1;
+    //     var obj = {
+    //         a: 10,
+    //         c: this.a + 20,
+    //         fn: function () {
+    //             return this.a;
+    //         }
+    //     }
+    //     return obj.c;
+    // }
+    // console.log(foo());    // ？ 'undifind'+20
+    // console.log(window.foo());  // 40
+
+
+    // var a = 20;
+    // var foo = {
+    //     a: 10,
+    //     getA: function () {
+    //         return this.a;
+    //     }
+    // }
+    // console.log(foo.getA()); // 10
+    // var test = foo.getA;
+    // console.log(test());  // 20
+
+    function foo() {
+        console.log(this.a)
+    }
+
+    function active(fn) {
+        fn(); // 真实调用者，为独立调用
+    }
+
+    var a = 20;
+    var obj = {
+        a: 10,
+        getA: foo
+    }
+
+    active(obj.getA);
+
+</script>

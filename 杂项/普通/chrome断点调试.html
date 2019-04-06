@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>chrome断点调试</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+</head>
+ 
+
+<body> 
+    <div id='app'>
+        <button @clcik='fdHandle'></button>
+    </div>
+</body>
+
+</html>
+
+ 
+<script type="text/javascript">
+    
+    // var fn 
+    // var m = 20;
+    // function foo () {  
+    //     var a = 2;
+    //     function baz(a){
+    //         console.log( a );    
+    //     } 
+
+    //     fn = baz
+    // }
+
+
+    // function bar () {
+    //     fn(m)
+    // }
+
+    // foo ();
+    // bar (); //2
+
+    // function foo() {
+    //     var a = 2;
+
+    //     return function bar() {
+    //         var b = 9;
+
+    //         return function fn() {
+    //             console.log(a+b);
+    //         }
+    //     }
+    // }
+
+    // var bar = foo();
+    // var fn = bar();
+    // fn();
+
+
+    // demo05
+    // (function aasa() {
+
+    //     var a = 10;
+    //     var b = 20;
+    //     var c = 30;
+
+    //     var test = {
+    //         m: 20,
+    //         add: function(x) {
+    //             return a + x;
+    //         },
+    //         sum: function() {
+    //             return a + b + this.m;
+    //         },
+    //         mark: function(k, j) {
+    //             return k + j;
+    //         }
+    //     }
+
+    //     window.test = test;
+
+    // })();
+
+    // test.add(100);
+    // test.sum();
+    // test.mark();
+
+    // var _mark = test.mark;
+    // _mark();
+
+
+    function foo() {
+        var a = 10;
+
+        function fn1() {
+            return a;
+        }
+
+        function fn2() {
+            return 10;
+        }
+
+        fn2();
+    }
+
+    foo();
+
+
+</script>

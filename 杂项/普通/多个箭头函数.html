@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>多个箭头函数</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+</head>
+ 
+
+<body> 
+    <div id='app'>
+         
+    </div>
+</body>
+
+</html>
+
+ 
+<script type="text/javascript">
+
+  //let add = a => b => a + b 
+  //console.log(add(12)(9)) 
+  // function add (a){
+  //   return function (b){
+  //     return a+b
+  //   }
+  // } 
+  // console.log(add(12)(9)) 
+  //circle函数，接受半径r和π
+  // function circle(r,p){
+  //     //计算半径为r的圆的面积
+  //     var area=p*r*r;
+  //     return area;
+  // } 
+  /*
+   * 通过函数柯里化来简化circle函数，只传入半径就能计算出面积
+   * 不管怎么样，π是不会变的，因此我们将他写死，不需要外部调用传入
+   */ 
+  // function curryCircle(r){
+  //     var p=3.14159265358;
+  //     var area=p*r*r;
+  //     return area;
+  // }
+  //circle函数，接受半径r和π
+  // function circle(r,p){
+  //     //计算半径为r的圆的面积
+  //     var area=p*r*r;
+  //     return area;
+  // }
+  // //针对circle函数的柯里化函数
+  // function curry(fn,p){
+  //     var finalMethod=function(r){
+  //         var result=fn(r,p);
+  //         return result;
+  //     }
+  //     return finalMethod;
+  // }
+  //我们有3种不同的π
+  // var curryCircle1=curry(circle,1.14);
+  // var curryCircle2=curry(circle,2.14);
+  // var curryCircle3=curry(circle,3.14); 
+  // console.log(curryCircle1) 
+  //输出:4.56  8.56  12.56
+  //console.log(curryCircle1(2),curryCircle2(2),curryCircle3(2));
+  //circle函数，接受半径r和π
+  // function circle(r,p){
+  //   //计算半径为r的圆的面积
+  //   var area=p*r*r;
+  //   return area;
+  // }
+  // function curry(fn){
+  //   //第一个参数是基础执行方法，slice切除
+  //   var args=Array.prototype.slice.call(arguments,1);
+  //   //直接返回匿名函数
+  //   return function(){
+  //       //slice新参数以便能调用concat
+  //       var innerArgs=Array.prototype.slice.call(arguments);
+  //       //将配置的参数和新传入的参数合并
+  //       var finalArgs=args.concat(innerArgs);
+  //       return fn.apply(null,finalArgs);
+  //   };
+  // }
+  // console.log(curry(circle))
+  // function fn() {
+  //   return 20;
+  // }
+  // console.log(fn + 10); // 输出结果是多少？
+  // function fn() {
+  //   return 20;
+  // }
+  // fn.toString = function() {
+  //     return 10;
+  // }
+  // console.log(fn + 10);  // 输出结果是多少？
+  // function fn() {
+  //   return 20;
+  // }
+  // fn.toString = function() {
+  //     return 10;
+  // }
+  // fn.valueOf = function() {
+  //     return 5;
+  // }
+  // console.log(fn ); // 输出结果是多少？
+  // var newArr = [1, 2, 3, 4].map(function(item, i, arr) {
+  //     console.log( this);  // 可运行试试看
+  //     return item + 1;  // 每一项加1
+  // }, { a: 1 })
+  // console.log(newArr); // [2, 3, 4, 5]
+  // 简单实现，参数只能从右到左传递
+
+  // function createCurry(func, args) { 
+  //     var arity = func.length;
+  //     var args = args || []; 
+  //     return function() {
+  //         var _args = [].slice.call(arguments);
+  //         [].push.apply(_args, args); 
+  //         // 如果参数个数小于最初的func.length，则递归调用，继续收集参数
+  //         if (_args.length < arity) {
+  //             return createCurry.call(this, func, _args);
+  //         } 
+  //         // 参数收集完毕，则执行func
+  //         return func.apply(this, _args);
+  //     }
+  // }
+   
+
+  // function checkPhone(phoneNumber) {
+  //   return /^1[34578]\d{9}$/.test(phoneNumber);
+  // }
+
+  // console.log(checkPhone(19333666669))
+
+
+
+  // function getNewArray(array) {
+  //     return array.map(function(item) {
+  //         return item * 100 + '%'
+  //     })
+  // }
+
+  // console.log(getNewArray([1, 2, 3, 0.12]))      // ['100%', '200%', '300%', '12%'];
+
+
+
+ 
+  // var vm = new Vue({
+  //   el:'#app',
+  //   data:{ 
+  //   },
+  //   methods:{
+  //     onFocus:function(){
+  //       console.log(1111)
+  //     }, 
+  //     handleClick () {
+  //       alert('hello,world!')
+  //     }
+  //   }
+  // })
+
+ 
+
+</script>

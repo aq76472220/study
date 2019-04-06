@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>[].push.apply()</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+</head>
+ 
+
+<body> 
+    <div id='app'>
+    </div>
+</body>
+
+</html>
+
+ 
+<script type="text/javascript">
+   
+    let arr1 = [1, 2, 3, 4, 5];
+    let arr2 = [6, 7, 8, 9, 10];
+
+    [].push.apply(arr1, arr2)
+    console.log(arr1,arr2)
+
+</script>

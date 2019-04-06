@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>hammer手势事件</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <script src="https://cdn.bootcss.com/hammer.js/2.0.8/hammer.js"></script>
+</head>
+ 
+
+ <style type="text/css">
+     #_test{height: 400px; height: 400px; background: #eee}
+ </style>
+
+<body>
+    <div id='app'>
+        <div id="_test"></div>
+    </div>
+</body>
+
+</html>
+
+ 
+<script type="text/javascript">
+   
+     //创建一个新的hammer对象并且在初始化时指定要处理的dom元素
+        var hammertime = new Hammer(document.getElementById("_test"));
+         //为该dom元素指定触屏移动事件
+        hammertime.on("swipe", function (ev) {
+              //控制台输出
+           console.log(ev);
+        });
+
+
+</script>   

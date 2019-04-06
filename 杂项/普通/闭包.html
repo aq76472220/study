@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>闭包</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"> 
+</head>
+ 
+
+<body> 
+    <div id=''>
+        
+    </div>
+</body>
+
+</html>
+
+ 
+<script type="text/javascript"> 
+ 	//    function foo(){
+	//     var a = 2;
+	//     function bar(){
+	//         console.log(a+1); // 2
+	//     }
+	//     return  bar;
+	// }
+	// var bar =  foo();
+	// bar();
+	// bar();
+
+	// function foo(){
+	//     var a = 2;
+	//     return function(){
+	//         console.log(++a);//2
+	//     }
+	// }
+	// var bar = foo();
+	// bar();
+	// bar();
+
+	//按照定义三的说法，在foo()函数的作用域中声明，在bar()函数的作用域中被调用的baz()函数是闭包
+	// function foo(){
+	//     var a = 2;
+	//     function baz(){
+	//         console.log(++a); //2
+	//     }
+	//     bar(baz);
+	// }
+	// function bar(fn){
+	//     fn();
+	// }
+
+	// foo();
+	// foo();
+
+	// let a = 3
+	// function addTwo(x) {
+	//   let ret = x + 2
+	//   return ret
+	// }
+	// let b = addTwo(a)
+	// console.log(b) // 5
+
+	// function add() { 
+	//     var counter = 0; 
+	//     counter += 1; 
+	//     return counter; 
+	// } 
+
+	// var counter = 0; 
+	// function add() { 
+	//    counter += 1; 
+	//    return counter;  
+	// }
+
+	// console.log(add())
+	// console.log(add())
+
+	//    var name = "The Window";
+	// 　  var object = {
+	// 　　　　name : "My Object",
+
+	// 　　　　getNameFunc : function(){
+	// 　　　　　　return function(){
+	// 　　　　　　　　return this.name;
+	// 　　　　　　};
+
+	// 　　　　} 
+	// 　　};
+
+	// function test(){
+	//   var arr = [];
+	//   for(var i = 0;i < 10;i++){
+	//     arr[i] = function(){
+	//       return i;
+	//     };
+	//   }
+	//   for(var a = 0;a < 10;a++){
+	//     console.log(arr[a]());
+	//   }
+	// }
+	// test(); // 连续打印 10 个 10
+
+	// function test(){
+	//   var arr = [];
+	//   for(let i = 0;i < 10;i++){  // 仅在这里作出了改动
+	//     arr[i] = function(){
+	//       return i;
+	//     };
+	//   }
+	//   for(var a = 0;a < 10;a++){
+	//     console.log(arr[a]());
+	//   }
+	// }
+	// test(); // 打印 0 到 9 
+	//　alert(object.getNameFunc()());
+</script>

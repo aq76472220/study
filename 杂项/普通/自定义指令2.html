@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>自定义指令</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+</head>
+ 
+
+<body> 
+    <div id='app'>
+        <!-- <input v-focus type="" name="" placeholder="请输入你的名称" >  
+        <input type="" name="" placeholder="请输入数字" v-numberInt:2.sa="num" v-model="num"> -->
+    </div>
+</body>
+
+</html>
+
+ 
+<script type="text/javascript"> 
+
+    
+    
+    // Vue.directive('numberint', {
+    //   bind: function(el, binding, vnode) {
+    //     console.log(el,binding,vnode)
+    //     const element = el
+    //     const len = binding.arg  // 初始化设置
+    //     element.value = Number(element.value ).toFixed(len)  // 失焦时候格式化
+    //     element.addEventListener('blur', function() {
+    //       if (isNaN(element.value)) {
+    //         vnode.data.model.callback(0)
+    //       } else {
+    //         console.log(vnode)
+    //         vnode.data.model.callback(Math.abs(Number(element.value).toFixed(len)))
+    //       }
+    //     })
+    //   }
+    // })
+
+    // Vue.directive('focus', {
+    //   inserted: function (el,bing) {
+    //     el.focus()
+    //   }
+    // })
+
+    new Vue({
+      el:'#app',
+      data:{
+        num:'2323'
+      }
+    })
+</script>
