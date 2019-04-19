@@ -1,1 +1,3 @@
-console.log('a')
+var $ = require('jquery')
+
+console.log($)
