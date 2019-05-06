@@ -4,50 +4,34 @@ import PropTypes from 'prop-types'
 import CommentApp from './CommentApp'
 import './index.css'
 
+// class LikeButton extends Component {
+//   constructor () {
+//     super()
+//     this.state = { isLiked: false }
+//   }
+//
+//   handleClickOnLikeButton () {
+//     this.setState({
+//       isLiked: !this.state.isLiked
+//     })
+//   }
+//
+//   render () {
+//     const likedText = this.props.likedText || '取消'
+//     const unlikedText = this.props.unlikedText || '点赞'
+//     return (
+//       <button onClick={this.handleClickOnLikeButton.bind(this)}>
+//         {this.state.isLiked ? likedText : unlikedText} 👍
+//       </button>
+//     )
+//   }
+// }
+//
 // ReactDOM.render(
-//   <CommentApp />,
+//   <LikeButton likedText ='真的已经赞了吗？' unlikedText = '我要去点赞........' />,
 //   document.getElementById('root')
 // )
 
-// class  Header extends Component  {
-// //   constructor () {
-// //     super()
-// //   }
-// //   componentWillUnmount() {
-// //     console.log('component will unmount')
-// //   }
-// //   render () {
-// //     return (
-// //       <div>我是header</div>
-// //     )
-// //   }
-// // }
-// //
-// // class Index extends Component {
-// //   constructor() {
-// //     super()
-// //     this.state = {
-// //       isShowHeader: true
-// //     }
-// //   }
-// //
-// //   handleShowOrHide () {
-// //     this.setState({
-// //       isShowHeader: !this.state.isShowHeader
-// //     })
-// //   }
-// //
-// //   render () {
-// //     return (
-// //       <div>
-// //         {this.state.isShowHeader ? <Header /> : null}
-// //         <button onClick={this.handleShowOrHide.bind(this)}>
-// //           显示或者隐藏标题
-// //         </button>
-// //       </div>
-// //     )
-// //   }
-// // }
 
 // class Clock extends Component {
 //   constructor () {
@@ -68,12 +52,19 @@ import './index.css'
 //     )
 //   }
 // }
-//
+// ccf1d49b79c8a884c63fc8ff5834aa3a4c6a0195
 // class Index extends Component {
 //   render () {
 //     return (
 //       <div>
+
 //         <Clock />
+
+//         {[
+//           <span>React.js </span>,
+//           <span>is </span>,
+//           <span>good</span>
+//         ]}
 //       </div>
 //     )
 //   }
@@ -83,6 +74,7 @@ import './index.css'
 //   <Index />,
 //   document.getElementById('root')
 // )
+
 
 // class AutoFocusInput extends Component {
 //   componentDidMount () {
@@ -114,6 +106,31 @@ import './index.css'
 //         </div>
 //         <p>{comment.content}</p>
 //       </div>
+
+
+const users = [
+  { username: 'Jerry', age: 21, gender: 'male' },
+  { username: 'Tomy', age: 22, gender: 'male' },
+  { username: 'Lily', age: 19, gender: 'female' },
+  { username: 'Lucy', age: 20, gender: 'female' }
+]
+
+// class Index extends Component {
+//   render () {
+//     const usersElements = [] // 保存每个用户渲染以后 JSX 的数组
+//     for (let user of users) {
+//       usersElements.push( // 循环每个用户，构建 JSX，push 到数组中
+//         <div>
+//           <div>姓名：{user.username}</div>
+//           <div>年龄：{user.age}</div>
+//           <div>性别：{user.gender}</div>
+//           <hr />
+//         </div>
+//       )
+//     }
+//
+//     return (
+//       <div>{usersElements}</div>
 //     )
 //   }
 // }
@@ -122,6 +139,25 @@ import './index.css'
 //   <Comment  comment={{username: '你是谁', content: '我要睡觉'}} />,
 //   document.getElementById('root')
 // )
+class Index extends Component {
+  render () {
+    return (
+      <div>
+        {users.map((user, i) => {
+          return (
+            <div  key={i}>
+              <div>姓名：{user.username}</div>
+              <div>年龄：{user.age}</div>
+              <div>性别：{user.gender}</div>
+              <hr />
+            </div>
+          )
+        })}
+      </div>
+    )
+  }
+}
+>>>>>>> ccf1d49b79c8a884c63fc8ff5834aa3a4c6a0195
 
 ReactDOM.render(
   <CommentApp />,
