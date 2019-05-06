@@ -6,7 +6,7 @@ class CommentApp extends Component {
   constructor () {
     super()
     this.state = {
-      comments: []
+      comments: JSON.parse(localStorage.getItem('comments'))? JSON.parse(localStorage.getItem('comments')) : []
     }
     console.log('construct')
   }
@@ -19,6 +19,17 @@ class CommentApp extends Component {
     console.log('component did mount')
   }
 
+  _saveComments(comments){
+    localStorage.setItem('comments', JSON.stringify(comments))
+  }
+
+  handleDeleteComment (index) {
+    var comments = this.state.comments
+    comments.splice(index, 1)
+    this.setState({comments})
+    this._saveComments(comments)
+  }
+
   handleSubmitComment (comment) {
     if (!comment) return
     if (!comment.username) return alert('请输入用户名')
@@ -27,6 +38,7 @@ class CommentApp extends Component {
     this.setState({
       comments: this.state.comments
     })
+    this._saveComments(this.state.comments)
   }
   render() {
     console.log('render')
@@ -36,6 +48,7 @@ class CommentApp extends Component {
           onSubmit={this.handleSubmitComment.bind(this)}
         />
         <CommentList
+          onDeleteComment = {this.handleDeleteComment.bind(this)}
           comments = {this.state.comments}
         />
       </div>

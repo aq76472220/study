@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
+import PropTypes from 'prop-types'
 import CommentApp from './CommentApp'
 import './index.css'
 
@@ -48,56 +49,81 @@ import './index.css'
 // //   }
 // // }
 
-class Clock extends Component {
-  constructor () {
-    super()
-    this.state = {
-      date: new Date().toLocaleTimeString()
-    }
-  }
+// class Clock extends Component {
+//   constructor () {
+//     super()
+//     this.state = {
+//       date: new Date()
+//     }
+//   }
+//
+//   render () {
+//     return (
+//       <div>
+//         <h1>
+//           <p>现在的时间是</p>
+//           {this.state.date.toLocaleTimeString()}
+//         </h1>
+//       </div>
+//     )
+//   }
+// }
+//
+// class Index extends Component {
+//   render () {
+//     return (
+//       <div>
+//         <Clock />
+//       </div>
+//     )
+//   }
+// }
+//
+// ReactDOM.render(
+//   <Index />,
+//   document.getElementById('root')
+// )
 
-  componentWillMount () {
-    this.timer = setInterval(() => {
-      this.setState({ date: new Date().toLocaleTimeString() })
-    }, 1000)
-  }
+// class AutoFocusInput extends Component {
+//   componentDidMount () {
+//     console.log(this.input_i)
+//     this.input_i.focus()
+//   }
+//
+//   render () {
+//     return (
+//       <input ref={(input) => this.input_i = input} />
+//     )
+//   }
+// }
 
-  render () {
-    return (
-      <div>
-        <h1>
-          {this.state.date}
-        </h1>
-      </div>
-    )
-  }
-}
 
-class Index extends Component {
-  constructor () {
-    super()
-    this.state = { isShowClock: true }
-  }
+// class Comment extends Component {
+//   static propTypes = {
+//     comment: PropTypes.object.isRequired
+//   }
+//   componentDidMount () {
+//     console.log(this.props)
+//   }
+//   render () {
+//     const { comment } = this.props
+//     return (
+//       <div className='comment'>
+//         <div className='comment-user'>
+//           <span>{comment.username} </span>：
+//         </div>
+//         <p>{comment.content}</p>
+//       </div>
+//     )
+//   }
+// }
 
-  handleShowOrHide () {
-    this.setState({
-      isShowClock: !this.state.isShowClock
-    })
-  }
-
-  render () {
-    return (
-      <div>
-        {this.state.isShowClock ? <Clock /> : null }
-        <button onClick={this.handleShowOrHide.bind(this)}>
-          显示或隐藏时钟
-        </button>
-      </div>
-    )
-  }
-}
+// ReactDOM.render(
+//   <Comment  comment={{username: '你是谁', content: '我要睡觉'}} />,
+//   document.getElementById('root')
+// )
 
 ReactDOM.render(
-  <Index />,
+  <CommentApp />,
   document.getElementById('root')
 )
