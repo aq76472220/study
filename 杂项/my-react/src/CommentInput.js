@@ -4,14 +4,24 @@ class CommentInput extends Component {
   constructor () {
     super()
     this.state = {
-      username: '',
+      username:  localStorage.getItem('username'),
       content: ''
     }
+  }
+  _saveUsername(username){
+    localStorage.setItem('username', username)
+  }
+  componentDidMount(){
+    this.textarea.focus()
   }
   handleUsernameChange (e) {
     this.setState({
       username: e.target.value
     })
+  }
+  handleUsernameBlur(e){
+    this._saveUsername(e.target.value)
+    console.log(e.target.value)
   }
   handleContentChange (e) {
     this.setState({
@@ -21,7 +31,11 @@ class CommentInput extends Component {
   handleSubmit () {
     if (this.props.onSubmit) {
       const { username, content } = this.state
-      this.props.onSubmit({username, content})
+      this.props.onSubmit({
+        username,
+        content,
+        createdTime: +new Date()
+      })
     }
     this.setState({ content: '' })
   }
@@ -33,6 +47,7 @@ class CommentInput extends Component {
           <div className='comment-field-input'>
             <input
               value={this.state.username}
+              onBlur={this.handleUsernameBlur.bind(this)}
               onChange={this.handleUsernameChange.bind(this)}
             />
           </div>
@@ -41,6 +56,7 @@ class CommentInput extends Component {
           <span className='comment-field-name'>评论内容：</span>
           <div className='comment-field-input'>
             <textarea
+              ref={(textarea) => {this.textarea = textarea }}
               value={this.state.content}
               onChange={this.handleContentChange.bind(this)}
             />

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
+import PropTypes from 'prop-types'
+import CommentApp from './CommentApp'
 import './index.css'
 
 // class LikeButton extends Component {
@@ -31,10 +33,33 @@ import './index.css'
 // )
 
 
+// class Clock extends Component {
+//   constructor () {
+//     super()
+//     this.state = {
+//       date: new Date()
+//     }
+//   }
+//
+//   render () {
+//     return (
+//       <div>
+//         <h1>
+//           <p>现在的时间是</p>
+//           {this.state.date.toLocaleTimeString()}
+//         </h1>
+//       </div>
+//     )
+//   }
+// }
+// ccf1d49b79c8a884c63fc8ff5834aa3a4c6a0195
 // class Index extends Component {
 //   render () {
 //     return (
 //       <div>
+
+//         <Clock />
+
 //         {[
 //           <span>React.js </span>,
 //           <span>is </span>,
@@ -49,6 +74,45 @@ import './index.css'
 //   <Index />,
 //   document.getElementById('root')
 // )
+
+
+
+// const users = [
+//   { username: 'Jerry', age: 21, gender: 'male' },
+//   { username: 'Tomy', age: 22, gender: 'male' },
+//   { username: 'Lily', age: 19, gender: 'female' },
+//   { username: 'Lucy', age: 20, gender: 'female' }
+// ]
+// class AutoFocusInput extends Component {
+//   componentDidMount () {
+//     console.log(this.input_i)
+//     this.input_i.focus()
+//   }
+//
+//   render () {
+//     return (
+//       <input ref={(input) => this.input_i = input} />
+//     )
+//   }
+// }
+
+
+// class Comment extends Component {
+//   static propTypes = {
+//     comment: PropTypes.object.isRequired
+//   }
+//   componentDidMount () {
+//     console.log(this.props)
+//   }
+//   render () {
+//     const { comment } = this.props
+//     return (
+//       <div className='comment'>
+//         <div className='comment-user'>
+//           <span>{comment.username} </span>：
+//         </div>
+//         <p>{comment.content}</p>
+//       </div>
 
 
 // const users = [
@@ -217,26 +281,24 @@ import './index.css'
 //   document.getElementById('root')
 // )
 
-class Editor extends Component {
-  constructor() {
-    super()
-    this.state = {
-      content: '<h1>React.js 小书</h1>'
-    }
-  }
 
-  render () {
-    return (
-      <div className='editor-wrapper'>
-        <span>{this.props.name}</span>
-      </div>
-
-    )
-  }
-}
+// ReactDOM.render(
+//   <Comment  comment={{username: '你是谁', content: '我要睡觉'}} />,
+//   document.getElementById('root')
+// )
+// class Index extends Component {
+//   render () {
+//     return (
+//       <div className='editor-wrapper'>
+//         <span>{this.props.name}</span>
+//       </div>
+//     )
+//
+//   }
+// }
 
 ReactDOM.render(
-  <Editor name ='我是谁' />,
+  <CommentApp />,
   document.getElementById('root')
 )
 
