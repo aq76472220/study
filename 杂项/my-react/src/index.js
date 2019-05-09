@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom'git
 import PropTypes from 'prop-types'
 import CommentApp from './CommentApp'
 import './index.css'
