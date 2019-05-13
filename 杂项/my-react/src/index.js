@@ -206,6 +206,7 @@ class Index extends Component {
   }
 }
 
+// 把 Provider 作为组件树的根节点
 ReactDOM.render(
   <Provider store={store}>
     <Index />
