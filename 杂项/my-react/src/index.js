@@ -1,25 +1,28 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
-import { Provider } from './react-redux'
+// import { Provider } from './react-redux'
+import { createStore } from 'redux'
+import { Provider, connect } from 'react-redux'
 import CommentApp from './CommentApp'
 import './index.css'
 
 
+console.log(Provider, '?@@#@3')
 
 
-function createStore (reducer) {
-  let state = null
-  const listeners = []
-  const subscribe = (listener) => listeners.push(listener)
-  const getState = () => state
-  const dispatch = (action) => {
-    state = reducer(state, action)
-    listeners.forEach((listener) => listener())
-  }
-  dispatch({}) // 初始化 state
-  return { getState, dispatch, subscribe }
-}
+// function createStore (reducer) {
+//   let state = null
+//   const listeners = []
+//   const subscribe = (listener) => listeners.push(listener)
+//   const getState = () => state
+//   const dispatch = (action) => {
+//     state = reducer(state, action)
+//     listeners.forEach((listener) => listener())
+//   }
+//   dispatch({}) // 初始化 state
+//   return { getState, dispatch, subscribe }
+// }
 
 const themeReducer = (state, action) => {
   if (!state) return {
@@ -32,6 +35,7 @@ const themeReducer = (state, action) => {
       return state
   }
 }
+
 const store = createStore(themeReducer)
 
 const mapStateToProps = (state) => {
@@ -40,55 +44,50 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onSwitchColor: (color) => {
-      dispatch({ type: 'CHANGE_COLOR', themeColor: color })
-    }
-  }
-}
 
-const connect = (mapStateToProps, mapDispatchToProps) => (WrappedComponent) => {
-  class Connect extends Component {
-    static contextTypes = {
-      store: PropTypes.object
-    }
-
-    constructor () {
-      super()
-      this.state = { allProps: {} }
-    }
-
-    componentWillMount() {
-      const { store } = this.context
-      this._updateProps()
-      store.subscribe(() => this._updateProps())
-    }
-
-    _updateProps () {
-      const { store } = this.context
-      let stateProps = mapStateToProps
-        ? mapStateToProps(store.getState(), this.props)
-        : {} // 防止 mapStateToProps 没有传入
-      let dispatchProps = mapDispatchToProps
-        ? mapDispatchToProps(store.dispatch, this.props)
-        : {} // 防止 mapDispatchToProps 没有传入
-      this.setState({
-        allProps: {
-          ...stateProps,
-          ...dispatchProps,
-          ...this.props
-        }
-      })
-    }
-
-    render () {
-      return <WrappedComponent {...this.state.allProps} />
-    }
-  }
-
-  return Connect
-}
+//
+// const connect = (mapStateToProps, mapDispatchToProps) => (WrappedComponent) => {
+//   class Connect extends Component {
+//     static contextTypes = {
+//       store: PropTypes.object
+//     }
+//
+//     constructor () {
+//       super()
+//       this.state = { allProps: {} }
+//     }
+//
+//     componentWillMount() {
+//       const { store } = this.context
+//       this._updateProps()
+//       store.subscribe(() => this._updateProps())
+//     }
+//
+//     _updateProps () {
+//       console.log(this.context, '..........')
+//       const { store } = this.context
+//       let stateProps = mapStateToProps
+//         ? mapStateToProps(store.getState(), this.props)
+//         : {} // 防止 mapStateToProps 没有传入
+//       let dispatchProps = mapDispatchToProps
+//         ? mapDispatchToProps(store.dispatch, this.props)
+//         : {} // 防止 mapDispatchToProps 没有传入
+//       this.setState({
+//         allProps: {
+//           ...stateProps,
+//           ...dispatchProps,
+//           ...this.props
+//         }
+//       })
+//     }
+//
+//     render () {
+//       return <WrappedComponent {...this.state.allProps} />
+//     }
+//   }
+//
+//   return Connect
+// }
 
 // class Header extends Component {
 //   static contextTypes = {
@@ -118,6 +117,10 @@ const connect = (mapStateToProps, mapDispatchToProps) => (WrappedComponent) => {
 //     )
 //   }
 // }
+// ReactDOM.render(
+//   <CommentApp />,
+//   document.getElementById('root')
+// )
 
 class Header extends Component {
   static propTypes = {
@@ -131,7 +134,15 @@ class Header extends Component {
 }
 
 
-Header = connect(mapStateToProps)(Header)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onSwitchColor: (color) => {
+      dispatch({ type: 'CHANGE_COLOR', themeColor: color })
+    }
+  }
+}
+//
+// Header = connect(mapStateToProps)(Header)
 
 
 
@@ -201,7 +212,9 @@ class Index extends Component {
     )
   }
 }
+ 
 
+// 把 Provider 作为组件树的根节点
 ReactDOM.render(
   <Provider store={store}>
     <Index />
