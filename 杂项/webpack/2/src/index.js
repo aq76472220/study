@@ -1,1 +1,4 @@
-console.log('12')
+
+
+import "./index.css"
+import "./01.png"
